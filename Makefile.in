@@ -9,6 +9,7 @@ JSON_C_LINK	= -L@JSON_C_LIBDIR@ @JSON_C_LIBS@
 TOOLS		= pcr-oracle
 
 MANDIR		= @MANDIR@
+BINDIR		= @BINDIR@
 MAN8DIR		= $(MANDIR)/man8
 MANPAGES	= man/pcr-oracle.8
 
@@ -40,8 +41,8 @@ ORACLE_OBJS	= $(addprefix build/,$(patsubst %.c,%.o,$(ORACLE_SRCS)))
 all: $(TOOLS) $(MANPAGES)
 
 install:: $(TOOLS) $(MANPAGES)
-	install -d $(DESTDIR)/bin
-	install -m 755 $(TOOLS) $(DESTDIR)/bin
+	install -d $(DESTDIR)$(BINDIR)
+	install -m 755 $(TOOLS) $(DESTDIR)$(BINDIR)
 	install -d $(DESTDIR)$(MAN8DIR)
 	install -m 644 $(MANPAGES) $(DESTDIR)$(MAN8DIR)
 
